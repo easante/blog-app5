@@ -8,9 +8,13 @@ class ArticlesController < ApplicationController
 
   def create
     @article = Article.new(article_params)
-    @article.save
-    flash[:notice] = "Article has been created"
-    redirect_to articles_path
+    if @article.save
+      flash[:notice] = "Article has been created"
+      redirect_to articles_path
+    else
+      flash[:alert] = "Article has not been created"
+      render :new
+    end
   end
 
 private
