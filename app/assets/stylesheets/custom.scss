@@ -1,20 +1,19 @@
-// @import "bootstrap-sprockets";
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 body {
   padding-top: 80px;
   background: #882E61;
+  color: #ffffff;
 }
 
 // Navbar styling
 .navbar {
  background: #64103F;
- // background: #2a76aa;
  padding-bottom: 20px;
 }
 
 .navbar-default .navbar-brand {
-  color: #ffffff;
   padding-top: 25px;
   font-size: 150%;
   font-weight: bold;
@@ -52,4 +51,16 @@ body {
 
 .article-detail {
   margin-top: 20px;
+}
+
+// Article Show view styling
+.article-detail-title {
+  font-size: 3em;
+  margin-bottom: 40px;
+}
+
+.article-show-body {
+  font-size: 1.5em;
+  padding-left: 0em;
+  margin-top: 15px;
 }

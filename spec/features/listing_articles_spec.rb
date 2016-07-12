@@ -37,5 +37,4 @@ RSpec.feature "Listing Articles" do
       expect(page).to have_content("No Articles Created")
     end
   end
-
 end
