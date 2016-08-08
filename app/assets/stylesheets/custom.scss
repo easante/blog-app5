@@ -3,8 +3,8 @@
 
 body {
   padding-top: 80px;
-  background: #882E61;
-  color: #ffffff;
+  background: #e1e1e1;
+  color: #64103F;
 }
 
 // Navbar styling
@@ -45,7 +45,7 @@ body {
 
 // Form styling
 .page-heading, div > label {
-  color: #ffffff;
+  color: #64103F;
 }
 
 // Listing articles styling
@@ -60,7 +60,13 @@ body {
 .article-body {
   font-size: 1.5em;
   padding-left: 1.2em;
+  color: #64103F;
 
+}
+
+.author {
+  color: #64103F;
+  padding-left: 25px;
 }
 
 // .article-title {
@@ -90,7 +96,7 @@ body {
 
 // Sign up -- Sign in
 .sign-link a {
-  color: #ffffff;
+  color: #64103F;
 }
 
 // Devise Error Messages
@@ -104,4 +110,8 @@ body {
 
 #error_explanation h2 {
  font-size: 150%;
+}
+
+footer {
+  color: #64103F;
 }

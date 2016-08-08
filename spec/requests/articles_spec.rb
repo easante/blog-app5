@@ -68,4 +68,50 @@ RSpec.describe "Articles", type: :request do
     end
   end
 
+  describe 'PUT /articles/:id' do
+    context 'with non-signed in user' do
+      before { put "/articles/#{@article.id}",
+              params: { article: {title: "New Title", body: "New body"} } }
+
+      it "redirects to the signin page" do
+        expect(response.status).to eq 302
+        flash_message = "You need to sign in or sign up before continuing."
+        expect(flash[:alert]).to eq flash_message
+      end
+    end
+
+    context 'with signed in users who are non-owners' do
+      before do
+        login_as(@fred)
+        put "/articles/#{@article.id}",
+                params: { article: {title: "New Title", body: "New body"} }
+      end
+
+      it "redirects to the home page" do
+        expect(response.status).to eq 302
+        flash_message = "You can only edit your own article."
+        expect(flash[:alert]).to eq flash_message
+      end
+    end
+
+    context 'with signed in user as owner' do
+      before { login_as(@john) }
+
+      it "successfully update article" do
+        put "/articles/#{@article.id}",
+                params: { article: {title: "New Title", body: "New body"} }
+
+        expect(response.status).to eq 302
+      end
+
+      it "unsuccessful update" do
+        put "/articles/#{@article.id}",
+                params: { article: {title: "New Title", body: ""} }
+
+        expect(flash[:alert]).to eq("Article has not been updated")
+        expect(response.status).to eq 200
+      end
+    end
+  end
+
 end
